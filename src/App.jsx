@@ -1,10 +1,11 @@
 import React from 'react';
+import Products from './pages/Products';
 import GlobalStyle from './styles/global';
 
 function App() {
   return (
     <>
-      <h1>Shopping Cart</h1>
+      <Products />
       <GlobalStyle />
     </>
   );
