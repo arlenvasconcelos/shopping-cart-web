@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import Header from '../../components/Header';
@@ -7,9 +8,13 @@ import { Container, ProductList, Pagination } from './styles';
 
 import { products, categories } from '../../database';
 
+import { addItem } from '../../store/actions/shoppingCart';
+
 const perPage = 2;
 
 export default function Products() {
+  const dispatch = useDispatch();
+
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
   const [filter, setFilter] = useState('');
@@ -25,6 +30,10 @@ export default function Products() {
 
   const handleFilterChange = (e) => {
     setFilter(Number(e.target.value));
+  };
+
+  const handleAddItem = (product) => {
+    dispatch(addItem({ product }));
   };
 
   useEffect(() => {
@@ -67,7 +76,7 @@ export default function Products() {
                   <span>{product.name}</span>
                   <small>{product.description}</small>
                 </div>
-                <button type="button">Adicionar ao carrinho</button>
+                <button type="button" onClick={() => handleAddItem(product)}>Adicionar ao carrinho</button>
               </div>
 
             ))}
