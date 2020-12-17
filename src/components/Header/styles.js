@@ -10,19 +10,19 @@ export const Container = styled.nav`
 
   box-shadow: 2px 2px 6px rgb(0,0,0);
 
-  > button {
+  > a {
     background-color: transparent;
     border: 0;
-    color: #fff;
+    color: #9466FF;
   }
 `;
 
 export const ShoppingCartContent = styled.div`
   position: relative;
-  button{
+  a{
     background-color: transparent;
     border: 0;
-    color: #fff;
+    color: #9466FF;
   }
 
   span{

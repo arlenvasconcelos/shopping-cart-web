@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiShoppingCart, FiChevronLeft } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import { Container, ShoppingCartContent } from './styles';
 
@@ -7,16 +8,16 @@ export default function Header() {
   return (
     <>
       <Container>
-        <button type="button">
+        <Link to="/">
           <FiChevronLeft size="30" />
-        </button>
+        </Link>
         {/* <img src="asas" alt="Logo" /> */}
         <span>Shopping Cart</span>
         <ShoppingCartContent>
           <span>1</span>
-          <button type="button">
+          <Link to="/shopping-cart">
             <FiShoppingCart size="30" />
-          </button>
+          </Link>
         </ShoppingCartContent>
 
       </Container>
