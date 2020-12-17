@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from '../../components/Header';
 
-import { Container, ProductsList } from './styles';
+import { Container, ProductList } from './styles';
 
 export default function Products() {
   return (
@@ -17,7 +17,7 @@ export default function Products() {
             <option>1</option>
           </select>
 
-          <ProductsList>
+          <ProductList>
             <div>
               <span>Coca cola lata</span>
               <button type="button">Adicionar ao carrinho</button>
@@ -30,7 +30,7 @@ export default function Products() {
               <span>Coca cola lata</span>
               <button type="button">Adicionar ao carrinho</button>
             </div>
-          </ProductsList>
+          </ProductList>
         </div>
       </Container>
     </>

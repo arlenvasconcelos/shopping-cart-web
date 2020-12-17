@@ -27,7 +27,7 @@ export const Container = styled.div`
 
 `;
 
-export const ProductsList = styled.div`
+export const ProductList = styled.div`
   margin-top: 32px;
 
   width: 100;
