@@ -1,12 +1,14 @@
 import React from 'react';
-// import Products from './pages/Products';
-import ShoppingCart from './pages/ShoppingCart';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './routes';
 import GlobalStyle from './styles/global';
 
 function App() {
   return (
     <>
-      <ShoppingCart />
+      <Router>
+        <Routes />
+      </Router>
       <GlobalStyle />
     </>
   );
