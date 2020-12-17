@@ -12,13 +12,8 @@ const perPage = 2;
 export default function Products() {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
-
-  useEffect(() => {
-    const numberOfPages = Math.trunc(products.length / perPage);
-
-    if (products.length % 10 === 0) setTotalPage(numberOfPages);
-    else setTotalPage(numberOfPages + 1);
-  }, []);
+  const [filter, setFilter] = useState('');
+  const [productsList, setProductsList] = useState(products);
 
   const handleUpdatePagination = (value) => {
     if (value <= 0 || value > totalPage) {
@@ -28,13 +23,36 @@ export default function Products() {
     setPage(value);
   };
 
+  const handleFilterChange = (e) => {
+    setFilter(Number(e.target.value));
+  };
+
+  useEffect(() => {
+    const numberOfPages = Math.trunc(productsList.length / perPage);
+
+    if (productsList.length % 10 === 0) setTotalPage(numberOfPages);
+    else setTotalPage(numberOfPages + 1);
+  }, [productsList]);
+
+  useEffect(() => {
+    if (filter === '') {
+      setProductsList(products);
+    } else {
+      setProductsList(products.filter((product) => (product.categoryId === filter)));
+    }
+  }, [filter]);
+
+  useEffect(() => {
+    handleUpdatePagination(1);
+  }, [productsList]);
+
   return (
     <>
       <Header />
       <Container>
         <div>
-          <select>
-            <option value="">Selecione a categoria</option>
+          <select defaultValue={filter} onChange={handleFilterChange}>
+            <option value="">Selecione uma categoria</option>
             {
               categories.map((category) => (
                 <option value={category.id}>{category.name}</option>
@@ -43,7 +61,7 @@ export default function Products() {
           </select>
 
           <ProductList>
-            {products.slice(perPage * (page - 1), perPage * page).map((product) => (
+            {productsList.slice(perPage * (page - 1), perPage * page).map((product) => (
               <div key={product.id}>
                 <div>
                   <span>{product.name}</span>
@@ -53,6 +71,10 @@ export default function Products() {
               </div>
 
             ))}
+
+            {!productsList.length && (
+              <p>Desculpa. Não temos produtos para o filtro selecionado.</p>
+            )}
           </ProductList>
 
           <Pagination>
