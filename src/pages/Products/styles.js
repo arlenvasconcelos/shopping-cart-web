@@ -41,13 +41,19 @@ export const ProductList = styled.div`
       margin-top: 5px;
     }
 
-    span{
+    div{
       flex: 1;
       margin: auto;
+      span{
+        display: block;
+      }
+      small{
+        color: #A1a1a1;
+      }
     }
 
     button{
-      background-color: #795CB3;
+      background-color: #9466FF;
       margin: auto;
       color: #fff;
       border: 0;
@@ -57,8 +63,29 @@ export const ProductList = styled.div`
       transition: background-color 0.2s;
 
       &:hover{
-        background-color: ${shade(0.2, '#795CB3')}
+        background-color: ${shade(0.2, '#9466FF')}
       }
     }
   }
+`;
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  ul{
+    list-style: none;
+    display: flex;
+    li{
+      & + li{
+        margin-left: 8px;
+      }
+
+      button{
+        background-color: transparent;
+        border: 0;
+      }
+    }
+  }
+
 `;
