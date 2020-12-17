@@ -42,51 +42,71 @@ export const ItemList = styled.div`
   table{
     margin-top: 16px;
     width: 100%;
-    tbody{
-      tr{
 
-        td{
-          text-align: start;
-          padding: 8px 0;
+    tr{
 
-          &:first-child{
-            width: fit-content;
+      td{
+        /* text-align: start; */
+        padding: 8px 0;
+
+        &:first-child{
+          width: fit-content;
+          div{
             display: flex;
             align-items: center;
-          }
 
-          &:last-child{
-            text-align: end;
-          }
+            > button{
+              background-color: transparent;
+              border: 0;
 
-          > button{
-            background-color: transparent;
-            border: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+              border-radius: 50%;
+              &:first-child{
+                background-color: #ff3030;
+              }
+              &:last-child{
+                background-color: #04D361;
+              }
 
-            /* width: 25px;
-            height: 25px; */
-            border-radius: 50%;
-            &:first-child{
-              background-color: #ff3030;
-            }
-            &:last-child{
-              background-color: #04D361;
+              svg{
+                margin: auto;
+              }
             }
 
-            svg{
-              margin: auto;
+            > span {
+              margin: auto 8px;
             }
           }
+        }
 
-          > span {
-            margin: auto 8px;
+        &:last-child{
+          text-align: end;
+        }
+
+
+
+
+
+        > div {
+          small{
+            color: #A1a1a1;
           }
         }
       }
     }
+  }
+`;
+
+export const EmptyCart = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+
+  svg{
+    margin-right: 8px;
   }
 `;
