@@ -14,12 +14,16 @@ export const Container = styled.div`
     select{
       width: 100%;
       height: 32px;
-      border-radius: 0px;
+      border-radius: 3px;
       background-color: #fff;
       border: 1px solid #ddd;
       color: #3A3A3A;
       font-size: 15px;
 
+    }
+
+    div{
+      border-radius: 3px;
     }
   }
 
@@ -57,6 +61,7 @@ export const ProductList = styled.div`
       margin: auto;
       color: #fff;
       border: 0;
+      border-radius: 3px;
       padding: 8px;
       font-size: 14px;
 

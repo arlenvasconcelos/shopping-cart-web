@@ -19,6 +19,7 @@ export const Container = styled.div`
 
       background-color: #795CB3;
       border: 0;
+      border-radius: 3px;
       padding: 4px 8px;
       color: #fff;
     }
@@ -85,10 +86,6 @@ export const ItemList = styled.div`
         &:last-child{
           text-align: end;
         }
-
-
-
-
 
         > div {
           small{

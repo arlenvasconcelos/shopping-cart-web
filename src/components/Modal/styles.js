@@ -16,7 +16,7 @@ export const Container = styled.div`
   > div {
     z-index:99;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 400px;
     height: auto;
     min-height: 250px;
@@ -58,7 +58,7 @@ export const ModalBody = styled.div`
     border: 0;
     background-color: #a4a4a4;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 3px;
 
     transition: background-color 0.2s;
 
