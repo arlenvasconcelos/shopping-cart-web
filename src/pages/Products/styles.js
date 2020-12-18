@@ -2,14 +2,15 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
   width: 100vw;
 
   display: flex;
 
   > div{
-    margin: 48px auto auto auto;
+    margin: 40px auto;
     width: 450px;
+    padding: 0px 16px;
 
     select{
       width: 100%;
