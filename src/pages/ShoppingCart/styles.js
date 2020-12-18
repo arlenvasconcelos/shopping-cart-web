@@ -14,7 +14,7 @@ export const Container = styled.div`
     text-align: center;
 
     > button {
-      margin-top: 32px;
+      margin: 32px auto;
       float: right;
 
       background-color: #795CB3;
