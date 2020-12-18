@@ -4,7 +4,6 @@ import { TYPES } from '../actions/shoppingCart';
 const defaultState = {
   items: [],
   total: 0,
-  open: false,
   time: null,
 };
 
@@ -54,10 +53,7 @@ const cartReducer = (state = defaultState, action) => {
         total: state.total - action.payload.product.price,
       };
     case TYPES.CLEAR_CART:
-      return {
-        ...state,
-        items: [],
-      };
+      return defaultState;
 
     case TYPES.SET_TIME:
       return {

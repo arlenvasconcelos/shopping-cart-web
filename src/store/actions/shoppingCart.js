@@ -26,7 +26,7 @@ const clearCart = () => ({
 });
 
 const setTime = ({ time }) => ({
-  type: TYPES.CLEAR_CART,
+  type: TYPES.SET_TIME,
   payload: { time },
 });
 
