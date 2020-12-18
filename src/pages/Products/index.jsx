@@ -68,7 +68,7 @@ export default function Products() {
             <option value="">Selecione uma categoria</option>
             {
               categories.map((category) => (
-                <option value={category.id}>{category.name}</option>
+                <option key={category.id} value={category.id}>{category.name}</option>
               ))
             }
           </select>
