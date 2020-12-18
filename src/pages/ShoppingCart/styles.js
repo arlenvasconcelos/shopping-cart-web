@@ -33,6 +33,8 @@ export const TopContent = styled.div`
   display: flex;
   align-items: center;
 
+  text-align: left;
+
   svg{
     margin-right: 16px;
   }

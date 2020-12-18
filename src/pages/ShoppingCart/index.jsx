@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
@@ -9,16 +9,20 @@ import Header from '../../components/Header';
 import Modal from '../../components/Modal';
 
 import formatValue from '../../utils/formatValue';
+import calculateTimeLeft from '../../utils/calculateTimeLeft';
 
-import {
-  Container, ItemList, TopContent, EmptyCart,
-} from './styles';
 import {
   addItem, decreaseItem, removeItem, clearCart,
 } from '../../store/actions/shoppingCart';
 
+import {
+  Container, ItemList, TopContent, EmptyCart,
+} from './styles';
+
 export default function ShoppingCart() {
-  const { items, total } = useSelector((state) => state.shoppingCart);
+  const {
+    items, total, time,
+  } = useSelector((state) => state.shoppingCart);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -26,6 +30,10 @@ export default function ShoppingCart() {
   const [modalBtnTitle, setModalBtnTitle] = useState('');
   const [modalMessage, setModalMessage] = useState('');
   const [modalType, setModalType] = useState('');
+  const [timeLeft, setTimeLeft] = useState(() => {
+    if (time) return calculateTimeLeft(time);
+    return {};
+  });
 
   const handleIncrement = (item) => {
     dispatch(addItem({ product: item.product }));
@@ -68,6 +76,26 @@ export default function ShoppingCart() {
     history.push('/');
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (time > new Date().getTime()) {
+        setTimeLeft(calculateTimeLeft(time));
+      } else {
+        dispatch(clearCart());
+      }
+    }, 1000);
+  });
+
+  // useEffect(() => {
+  //   if (timeLeft.seconds === 0) dispatch(clearCart());
+  // }, [timeLeft]);
+
+  // useEffect(() => {
+  //   if (expiredTime) {
+  //     dispatch(clearCart());
+  //   }
+  // }, [expiredTime]);
+
   return (
     <>
       <Header />
@@ -81,7 +109,13 @@ export default function ShoppingCart() {
                 <FiShoppingBag size="50" />
                 <div>
                   <strong>Mercado do seu Zé</strong>
-                  <p>09:54 min restantes</p>
+                  {timeLeft && (
+                  <p>
+                    Tempo restante:
+                    {' '}
+                    {`${timeLeft.minutes}:${timeLeft.seconds}`}
+                  </p>
+                  )}
                 </div>
               </TopContent>
               <ItemList>

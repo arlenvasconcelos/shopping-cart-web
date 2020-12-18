@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import Header from '../../components/Header';
@@ -8,18 +8,19 @@ import { Container, ProductList, Pagination } from './styles';
 
 import { products, categories } from '../../database';
 
-import { addItem } from '../../store/actions/shoppingCart';
+import { addItem, setTime } from '../../store/actions/shoppingCart';
 
 const perPage = 5;
+const expireTime = 15; // in minutes
 
 export default function Products() {
   const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.shoppingCart);
 
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
   const [filter, setFilter] = useState('');
   const [productsList, setProductsList] = useState(products);
-
   const handleUpdatePagination = (value) => {
     if (value <= 0 || value > totalPage) {
       return;
@@ -33,6 +34,9 @@ export default function Products() {
   };
 
   const handleAddItem = (product) => {
+    if (items.length === 0) {
+      dispatch(setTime({ time: new Date().getTime() + 60000 * expireTime }));
+    }
     dispatch(addItem({ product }));
   };
 

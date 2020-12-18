@@ -8,7 +8,9 @@ import formatValue from '../../utils/formatValue';
 import { Container, ShoppingCartContent, ShoppingCartModal } from './styles';
 
 export default function Header() {
-  const { items, total } = useSelector((state) => state.shoppingCart);
+  const {
+    items, total,
+  } = useSelector((state) => state.shoppingCart);
 
   return (
     <>
@@ -16,7 +18,6 @@ export default function Header() {
         <Link to="/">
           <FiChevronLeft size="30" />
         </Link>
-        {/* <img src="asas" alt="Logo" /> */}
         <span>Shopping All</span>
         <ShoppingCartContent>
           {
