@@ -13,7 +13,9 @@ import formatValue from '../../utils/formatValue';
 import {
   Container, ItemList, TopContent, EmptyCart,
 } from './styles';
-import { addItem, decreaseItem, removeItem } from '../../store/actions/shoppingCart';
+import {
+  addItem, decreaseItem, removeItem, clearCart,
+} from '../../store/actions/shoppingCart';
 
 export default function ShoppingCart() {
   const { items, total } = useSelector((state) => state.shoppingCart);
@@ -52,10 +54,17 @@ export default function ShoppingCart() {
   };
 
   const handleModalClose = () => {
+    if (modalType === 'success') {
+      dispatch(clearCart());
+      history.push('/');
+    }
     setShowModal(false);
   };
 
   const modalAction = () => {
+    if (modalType === 'success') {
+      dispatch(clearCart());
+    }
     history.push('/');
   };
 
