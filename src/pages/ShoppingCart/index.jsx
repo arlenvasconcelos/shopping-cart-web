@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   FiShoppingBag, FiMinusCircle, FiPlusCircle, FiFrown,
 } from 'react-icons/fi';
 
 import Header from '../../components/Header';
+import Modal from '../../components/Modal';
 
 import formatValue from '../../utils/formatValue';
 
@@ -16,17 +18,45 @@ import { addItem, decreaseItem, removeItem } from '../../store/actions/shoppingC
 export default function ShoppingCart() {
   const { items, total } = useSelector((state) => state.shoppingCart);
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalBtnTitle, setModalBtnTitle] = useState('');
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalType, setModalType] = useState('');
 
   const handleIncrement = (item) => {
     dispatch(addItem({ product: item.product }));
   };
 
   const handleDecrement = (item) => {
+    if (items.length === 1 && item.quantity === 1) {
+      setModalMessage('Você removeu o último item do carrinho.');
+      setModalBtnTitle('Continuar comprando');
+      setModalType('warning');
+      setShowModal(true);
+    }
+
     if (item.quantity === 1) {
       dispatch(removeItem({ product: item.product }));
     } else {
       dispatch(decreaseItem({ product: item.product }));
     }
+  };
+
+  const handleFinish = () => {
+    setModalMessage('Pedido realizado com sucesso.');
+    setModalBtnTitle('Fechar');
+    setModalType('success');
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const modalAction = () => {
+    history.push('/');
   };
 
   return (
@@ -81,7 +111,7 @@ export default function ShoppingCart() {
                 </table>
 
               </ItemList>
-              <button type="button">Finalizar Compra</button>
+              <button type="button" onClick={handleFinish}>Finalizar Compra</button>
             </>
           )}
 
@@ -96,6 +126,17 @@ export default function ShoppingCart() {
         </div>
 
       </Container>
+      {
+        showModal && (
+          <Modal
+            btnTitle={modalBtnTitle}
+            message={modalMessage}
+            handleClose={handleModalClose}
+            action={modalAction}
+            type={modalType}
+          />
+        )
+      }
     </>
   );
 }
