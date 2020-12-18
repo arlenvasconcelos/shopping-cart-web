@@ -10,7 +10,7 @@ import { products, categories } from '../../database';
 
 import { addItem } from '../../store/actions/shoppingCart';
 
-const perPage = 2;
+const perPage = 5;
 
 export default function Products() {
   const dispatch = useDispatch();
