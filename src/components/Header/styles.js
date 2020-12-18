@@ -15,6 +15,12 @@ export const Container = styled.nav`
     border: 0;
     color: #9466FF;
   }
+
+  > span{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
 `;
 
 export const ShoppingCartContent = styled.div`
