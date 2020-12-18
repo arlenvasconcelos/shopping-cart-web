@@ -29,7 +29,7 @@ export default function Products() {
   };
 
   const handleFilterChange = (e) => {
-    setFilter(Number(e.target.value));
+    setFilter(e.target.value);
   };
 
   const handleAddItem = (product) => {
@@ -47,7 +47,7 @@ export default function Products() {
     if (filter === '') {
       setProductsList(products);
     } else {
-      setProductsList(products.filter((product) => (product.categoryId === filter)));
+      setProductsList(products.filter((product) => (product.categoryId === Number(filter))));
     }
   }, [filter]);
 
