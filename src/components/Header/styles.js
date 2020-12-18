@@ -10,7 +10,7 @@ export const Container = styled.nav`
 
   box-shadow: 2px 2px 6px rgb(0,0,0);
 
-  > a {
+  > div > a {
     background-color: transparent;
     border: 0;
     color: #9466FF;
