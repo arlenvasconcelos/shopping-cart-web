@@ -5,7 +5,7 @@ export const Container = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 64px;
-  padding: 16px;
+  padding: 16px 24px;
   background-color: #121212;
 
   box-shadow: 2px 2px 6px rgb(0,0,0);
@@ -33,10 +33,10 @@ export const ShoppingCartContent = styled.div`
 
   span{
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 15px;
-    height: 15px;
+    top: -3px;
+    right: -3px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background-color: #F1B62E;
     font-size: 13px;
