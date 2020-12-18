@@ -2,8 +2,6 @@ const calculateTimeLeft = (time) => {
   const actual = new Date().getTime();
   const difference = time - actual;
 
-  console.log(time, 'oioi', actual);
-
   let timeLeft = {};
 
   if (difference > 0) {
