@@ -1,17 +1,10 @@
 const TYPES = {
-  CLEAR_CART: 'CLEAR_CART',
-  OPEN_CART: 'OPEN_CART',
-  CLOSE_CART: 'CLOSE_CART',
-  UPDATE_ITEMS: 'UPDATE_ITEMS',
-  ADD_ITEM: 'ADD_ITEM',
-  DECREASE_ITEM: 'DECREASE_ITEM',
-  REMOVE_ITEM: 'REMOVE_ITEM',
+  CLEAR_CART: 'shoppingCart/CLEAR_CART',
+  ADD_ITEM: 'shoppingCart/ADD_ITEM',
+  DECREASE_ITEM: 'shoppingCart/DECREASE_ITEM',
+  REMOVE_ITEM: 'shoppingCart/REMOVE_ITEM',
+  SET_TIME: 'shoppingCart/SET_TIME',
 };
-
-const updateItems = ({ items }) => ({
-  type: TYPES.UPDATE_ITEMS,
-  payload: { items },
-});
 
 const addItem = ({ product }) => ({
   type: TYPES.ADD_ITEM,
@@ -32,20 +25,16 @@ const clearCart = () => ({
   type: TYPES.CLEAR_CART,
 });
 
-const openCart = () => ({
-  type: TYPES.OPEN_CART,
-});
-const closeCart = () => ({
-  type: TYPES.CLOSE_CART,
+const setTime = ({ time }) => ({
+  type: TYPES.CLEAR_CART,
+  payload: { time },
 });
 
 export {
   TYPES,
-  updateItems,
   addItem,
   decreaseItem,
   removeItem,
   clearCart,
-  openCart,
-  closeCart,
+  setTime,
 };

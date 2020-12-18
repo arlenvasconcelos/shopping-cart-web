@@ -5,18 +5,15 @@ const defaultState = {
   items: [],
   total: 0,
   open: false,
+  time: null,
 };
 
 const cartReducer = (state = defaultState, action) => {
   switch (action.type) {
-    // case TYPES.UPDATE_ITEMS:
-    //   return {
-    //     ...state,
-    //     items: action.payload,
-    //   };
     case TYPES.ADD_ITEM: {
       // increment if exists
       const { items } = state;
+
       const index = items.findIndex((item) => item.product.id === action.payload.product.id);
       if (index !== -1) {
         items[index] = { ...items[index], quantity: items[index].quantity + 1 };
@@ -50,6 +47,7 @@ const cartReducer = (state = defaultState, action) => {
       };
     }
     case TYPES.REMOVE_ITEM:
+
       return {
         ...state,
         items: state.items.filter((item) => !(item.product.id === action.payload.product.id)),
@@ -60,17 +58,12 @@ const cartReducer = (state = defaultState, action) => {
         ...state,
         items: [],
       };
-    case TYPES.OPEN_CART:
-      return {
-        ...state,
-        open: true,
-      };
-    case TYPES.CLOSE_CART:
-      return {
-        ...state,
-        open: false,
-      };
 
+    case TYPES.SET_TIME:
+      return {
+        ...state,
+        time: action.payload.time,
+      };
     default:
       return state;
   }
