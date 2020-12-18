@@ -17,7 +17,7 @@ export default function Header() {
           <FiChevronLeft size="30" />
         </Link>
         {/* <img src="asas" alt="Logo" /> */}
-        <span>Shopping Cart</span>
+        <span>Shopping All</span>
         <ShoppingCartContent>
           {
             !!items.length && (
